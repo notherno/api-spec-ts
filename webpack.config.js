@@ -20,7 +20,10 @@ module.exports = {
     port: 3000,
   },
   performance: {
-    hints: false
+    hints: false,
+  },
+  resolveLoader: {
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')],
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -35,6 +38,11 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /definitions\.ts$/,
+        loader: 'definition-loader',
         exclude: /node_modules/,
       },
       {
