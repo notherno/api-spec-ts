@@ -1,7 +1,9 @@
 import * as Api from 'swagger-schema-official'
 
+const ref = (name: string) => `#/definitions/${name}`
+
 export const NewPet: Api.Schema = {
-  $ref: '#/definitions/NewPet',
+  $ref: ref('NewPet'),
   type: 'object',
   required: ['name'],
   properties: {
@@ -15,12 +17,10 @@ export const NewPet: Api.Schema = {
 }
 
 export const Pet: Api.Schema = {
-  $ref: '#/definitions/Pet',
+  $ref: ref('Pet'),
   type: 'object',
   allOf: [
-    {
-      $ref: NewPet.$ref,
-    },
+    { $ref: NewPet.$ref },
     {
       required: ['id'],
       properties: {
@@ -34,7 +34,7 @@ export const Pet: Api.Schema = {
 }
 
 export const Error: Api.Schema = {
-  $ref: '#/definitions/Error',
+  $ref: ref('Error'),
   type: 'object',
   required: ['code', 'message'],
   properties: {
