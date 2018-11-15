@@ -1,5 +1,5 @@
 import * as Api from 'swagger-schema-official'
-import { Error } from '../../definitions'
+import { refs } from '../../definitions'
 
 const deletePet: Api.Operation = {
   description: 'deletes a single pet based on the ID supplied',
@@ -20,7 +20,7 @@ const deletePet: Api.Operation = {
     },
     default: {
       description: 'unexpected error',
-      schema: { $ref: Error.$ref },
+      schema: { $ref: refs.ErrorResponse },
     },
   },
 }

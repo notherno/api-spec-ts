@@ -1,57 +1,23 @@
-import * as Api from 'swagger-schema-official'
-
-const ref = (name: string) => `#/definitions/${name}`
-
-export const NewPet: Api.Schema = {
-  $ref: ref('NewPet'),
-  type: 'object',
-  required: ['name'],
-  properties: {
-    name: {
-      type: 'string',
-    },
-    tag: {
-      type: 'string',
-    },
-  },
+export interface NewPet {
+  /** A name for pet */
+  name: string
+  /** Comma-separated tag name */
+  tag?: string
 }
 
-export const Pet: Api.Schema = {
-  $ref: ref('Pet'),
-  type: 'object',
-  allOf: [
-    { $ref: NewPet.$ref },
-    {
-      required: ['id'],
-      properties: {
-        id: {
-          type: 'integer',
-          format: 'int64',
-        },
-      },
-    },
-  ],
+export interface Pet extends NewPet {
+  /** A unique ID for pet */
+  id: number
 }
 
-export const Error: Api.Schema = {
-  $ref: ref('Error'),
-  type: 'object',
-  required: ['code', 'message'],
-  properties: {
-    code: {
-      type: 'integer',
-      format: 'int32',
-    },
-    message: {
-      type: 'string',
-    },
-  },
+export interface ErrorResponse {
+  /**
+   * Error code
+   * @TJS-type integer
+   */
+  code: number
+  message: string
 }
 
-const definitions: { [name: string]: Api.Schema } = {
-  Pet,
-  NewPet,
-  Error,
-}
-
-export { definitions as default }
+export const definitions: any = {}
+export const refs: any = {}

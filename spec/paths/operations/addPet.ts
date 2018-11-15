@@ -1,5 +1,5 @@
 import * as Api from 'swagger-schema-official'
-import { NewPet, Pet, Error } from '../../definitions'
+import { refs } from '../../definitions'
 
 const addPet: Api.Operation = {
   description: 'Creates a new pet in the store.  Duplicates are allowed',
@@ -10,17 +10,17 @@ const addPet: Api.Operation = {
       in: 'body',
       description: 'Pet to add to the store',
       required: true,
-      schema: { $ref: NewPet.$ref },
+      schema: { $ref: refs.NewPet },
     },
   ],
   responses: {
     '200': {
       description: 'pet response',
-      schema: { $ref: Pet.$ref },
+      schema: { $ref: refs.Pet },
     },
     default: {
       description: 'unexpected error',
-      schema: { $ref: Error.$ref },
+      schema: { $ref: refs.ErrorResponse },
     },
   },
 }

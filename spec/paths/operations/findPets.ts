@@ -1,5 +1,5 @@
 import * as Api from 'swagger-schema-official'
-import { Pet, Error } from '../../definitions'
+import { refs } from '../../definitions'
 
 const findPets: Api.Operation = {
   description:
@@ -31,12 +31,12 @@ const findPets: Api.Operation = {
       description: 'pet response',
       schema: {
         type: 'array',
-        items: { $ref: Pet.$ref },
+        items: { $ref: refs.Pet },
       },
     },
     default: {
       description: 'unexpected error',
-      schema: { $ref: Error.$ref },
+      schema: { $ref: refs.ErrorResponse },
     },
   },
 }
