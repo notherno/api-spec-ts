@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@types/swagger-schema-official": "^2.0.13",
+    "prettier": "^1.15.2",
+    "redoc": "^2.0.0-alpha.41"
+  }
+}
