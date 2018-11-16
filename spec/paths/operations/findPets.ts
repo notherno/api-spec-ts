@@ -30,8 +30,7 @@ const findPets: Api.Operation = {
     200: {
       description: 'pet response',
       schema: {
-        type: 'array',
-        items: { $ref: refs.Pet },
+        $ref: refs.Pets,
       },
     },
     default: {

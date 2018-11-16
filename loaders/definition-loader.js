@@ -1,6 +1,17 @@
 const TJS = require('typescript-json-schema')
 
-module.exports = function() {
+function formatModule(definitions, refs, code) {
+  return `${code}
+export const definitions: any = ${JSON.stringify(definitions, null, '  ')}
+export const refs: { [key: string]: string } = ${JSON.stringify(
+    refs,
+    null,
+    '  '
+  )}
+`
+}
+
+module.exports = function(source) {
   this.cacheable()
   const callback = this.async()
 
@@ -24,14 +35,10 @@ module.exports = function() {
     {}
   )
 
-  const output = `
-  export const definitions: any = ${JSON.stringify(definitions, null, '  ')}
-  export const refs: { [key: string]: string } = ${JSON.stringify(
-    refs,
-    null,
-    '  '
-  )}
-  `
+  const code = source
+    .split(/\n/)
+    .filter(line => !/^export const /.test(line))
+    .join('\n')
 
-  callback(null, output)
+  callback(null, formatModule(definitions, refs, code))
 }
