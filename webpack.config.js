@@ -41,8 +41,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /definitions\.ts$/,
-        loader: 'definition-loader',
+        test: /schemas\.ts$/,
+        loader: 'schema-loader',
         exclude: /node_modules/,
       },
       {

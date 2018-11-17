@@ -1,7 +1,7 @@
-import * as Api from 'swagger-schema-official'
-import { refs } from '../../definitions'
+import { OperationObject } from 'openapi3-ts'
+import { refs } from '../../schemas'
 
-const deletePet: Api.Operation = {
+const deletePet: OperationObject = {
   description: 'deletes a single pet based on the ID supplied',
   operationId: 'deletePet',
   parameters: [
@@ -10,8 +10,10 @@ const deletePet: Api.Operation = {
       in: 'path',
       description: 'ID of pet to delete',
       required: true,
-      type: 'integer',
-      format: 'int64',
+      schema: {
+        type: 'integer',
+        format: 'int64',
+      },
     },
   ],
   responses: {
@@ -20,7 +22,11 @@ const deletePet: Api.Operation = {
     },
     default: {
       description: 'unexpected error',
-      schema: { $ref: refs.ErrorResponse },
+      content: {
+        'application/json': {
+          schema: { $ref: refs.ErrorResponse },
+        },
+      },
     },
   },
 }

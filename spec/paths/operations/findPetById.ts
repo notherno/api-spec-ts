@@ -1,7 +1,7 @@
-import * as Api from 'swagger-schema-official'
-import { refs } from '../../definitions'
+import { OperationObject } from 'openapi3-ts'
+import { refs } from '../../schemas'
 
-const findPetById: Api.Operation = {
+const findPetById: OperationObject = {
   description:
     'Returns a user based on a single ID, if the user does not have access to the pet',
   operationId: 'findPetById',
@@ -11,18 +11,28 @@ const findPetById: Api.Operation = {
       in: 'path',
       description: 'ID of pet to fetch',
       required: true,
-      type: 'integer',
-      format: 'int64',
+      schema: {
+        type: 'integer',
+        format: 'int64',
+      },
     },
   ],
   responses: {
     '200': {
       description: 'pet response',
-      schema: { $ref: refs.Pet },
+      content: {
+        'application/json': {
+          schema: { $ref: refs.Pet },
+        },
+      },
     },
     default: {
       description: 'unexpected error',
-      schema: { $ref: refs.ErrorResponse },
+      content: {
+        'application/json': {
+          schema: { $ref: refs.ErrorResponse },
+        },
+      },
     },
   },
 }

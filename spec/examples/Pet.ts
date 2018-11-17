@@ -1,4 +1,4 @@
-import { Pet } from '../definitions'
+import { Pet } from '../schemas'
 
 export const rabbit: Pet = {
   id: 10,

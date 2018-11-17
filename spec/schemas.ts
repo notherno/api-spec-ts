@@ -1,8 +1,10 @@
-export const definitions: any = {}
-export const refs: any = {}
+export const schemas: any = {}
+export const refs: { [key: string]: string } = {}
 
 export interface NewPet {
-  /** A name for pet */
+  /**
+   * A name for pet
+   */
   name: string
   /** Comma-separated tag name */
   tag?: string
@@ -22,11 +24,12 @@ export interface ErrorResponse {
   /**
    * Error code
    * @TJS-type integer
+   * @TJS-example 400
    */
   code: number
   /**
    * Error message
-   * @TJS-example something went wrong
+   * @TJS-example 'something went wrong'
    */
   message: string
 }

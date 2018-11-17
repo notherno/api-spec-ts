@@ -1,6 +1,6 @@
-import * as Api from 'swagger-schema-official'
+import { InfoObject } from 'openapi3-ts'
 
-const info: Api.Info = {
+const info: InfoObject = {
   version: '1.0.0',
   title: 'Swagger Petstore',
   description:

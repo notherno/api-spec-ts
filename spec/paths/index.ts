@@ -1,10 +1,10 @@
-import * as Api from 'swagger-schema-official'
+import { PathsObject } from 'openapi3-ts'
 import findPets from './operations/findPets'
 import findPetById from './operations/findPetById'
 import addPet from './operations/addPet'
 import deletePet from './operations/deletePet'
 
-const paths: { [pathname: string]: Api.Path } = {
+const paths: PathsObject = {
   '/pets': {
     get: findPets,
     post: addPet,
