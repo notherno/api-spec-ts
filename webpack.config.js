@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TsJsonSchemaPlugin = require('./plugins/ts-json-schema-plugin')
 
 const publicDirName = path.join(__dirname, 'public')
 
@@ -14,10 +15,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html'),
     }),
+    new TsJsonSchemaPlugin(),
   ],
   devServer: {
     contentBase: publicDirName,
     port: 3000,
+  },
+  watchOptions: {
+    aggregateTimeout: 0,
   },
   performance: {
     hints: false,
