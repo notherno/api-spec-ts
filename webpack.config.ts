@@ -1,10 +1,11 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const TsJsonSchemaPlugin = require('./plugins/ts-json-schema-plugin')
+import webpack from 'webpack'
+import * as path from 'path'
+import HtmlWebpackPlugin = require('html-webpack-plugin')
+import TsJsonSchemaPlugin from './plugins/ts-json-schema-plugin'
 
 const publicDirName = path.join(__dirname, 'public')
 
-module.exports = {
+export default <webpack.Configuration>{
   devtool: 'inline-source-map',
   entry: [path.resolve(__dirname, 'index.tsx')],
   output: {
