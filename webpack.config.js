@@ -1,9 +1,12 @@
+// @ts-check
+
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TsJsonSchemaPlugin = require('./plugins/ts-json-schema-plugin')
 
 const publicDirName = path.join(__dirname, 'public')
 
+/** @type import('webpack').Configuration */
 module.exports = {
   devtool: 'inline-source-map',
   entry: [path.resolve(__dirname, 'index.tsx')],
